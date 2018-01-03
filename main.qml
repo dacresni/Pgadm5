@@ -8,24 +8,24 @@ ApplicationWindow {
     height: 480
     title: qsTr("PostgreSQL")
 
+
     ScrollView {
         id: scrollView
         anchors.fill: parent
 
         StackView {
-            id: stackView
+            id: viewstack
             anchors.fill: parent
-
             ListView {
-                id: connections
+                id: serverlist
                 anchors.leftMargin: 0
                 anchors.topMargin: 17
                 anchors.rightMargin: -620
                 anchors.bottomMargin: -442
                 anchors.fill: parent
-                model: 20
+                model: hosts
                 delegate: ItemDelegate {
-                    text: "Item " + (index + 1)
+                    text:  name
                     width: parent.width
                 }
             }
@@ -34,7 +34,20 @@ ApplicationWindow {
     }
 
     Connections {
-        target: connections
+        target: serverlist
         onClicked: print("clicked")
     }
+    ListModel {
+        id: hosts
+        ListElement {
+            name: "pg_prime"
+        }
+        ListElement {
+            name: "pg_secondary"
+        }
+        ListElement {
+            name: "backup"
+        }
+    }
+
 }
