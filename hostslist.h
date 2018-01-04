@@ -4,13 +4,13 @@
 #include <QObject>
 #include <QString>
 
-class DBHost : public QObject {
+class DBHosts : public QObject {
   Q_OBJECT
-  Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+  Q_PROPERTY(QString name READ name WRITE setName)
  public: 
-    DBHost(QObject *parent = nullptr);
+    explicit DBHosts(QObject *parent = nullptr);
     QString name();
-    void setName(const QString &);
+    void setName(const QString &n);
 
  private:
     QString db_name;

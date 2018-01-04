@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import io.github.dacresni 1.0
+import io.github.dacresni.dbhost 1.0
 
 
 ApplicationWindow {
@@ -9,8 +9,7 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("PostgreSQL")
-
-
+    property DBHosts hostlist
     ScrollView {
         id: scrollView
         anchors.fill: parent
