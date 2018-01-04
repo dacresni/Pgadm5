@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>hostslist.h</file>
+        <file>hostlist.cpp</file>
     </qresource>
 </RCC>

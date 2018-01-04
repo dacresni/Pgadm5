@@ -33,10 +33,6 @@ ApplicationWindow {
 
     }
 
-    Connections {
-        target: serverlist
-        onClicked: print("clicked")
-    }
     ListModel {
         id: hosts
         ListElement {
