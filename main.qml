@@ -1,5 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import io.github.dacresni 1.0
+
 
 ApplicationWindow {
     id: main

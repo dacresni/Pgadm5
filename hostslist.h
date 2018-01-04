@@ -2,18 +2,18 @@
 #define DBHOST_H
 
 #include <QObject>
+#include <QString>
 
-class DBHost: public QObject
-{
- Q_OBJECT
- Q_PROPERTY(QString name REAAD name WRITE setName)
- Q_PROPERTY(QString db_version REAAD version )  
+class DBHost : public QObject {
+  Q_OBJECT
+  Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
  public: 
-    DBHost(QObject *parent = 0);
-    QString name() const;
+    DBHost(QObject *parent = nullptr);
+    QString name();
     void setName(const QString &);
-    int version();
+
  private:
-    QString name;
-    int db_version; 
+    QString db_name;
 };
+
+#endif //DBHOST_H

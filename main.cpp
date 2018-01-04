@@ -1,6 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include "hostslist.h"
+
+
 int main(int argc, char *argv[])
 {
 #if defined(Q_OS_WIN)
@@ -9,10 +12,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    qmlRegisterType<DBHost>("io.github.dacresni", 1, 0,"DBHost");
+
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
-
     return app.exec();
 }
