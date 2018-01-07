@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import io.github.dacresni.dbhost 1.0
+import Qt.labs.settings 1.0
 
 
 ApplicationWindow {
@@ -9,13 +10,18 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("PostgreSQL")
-    property DBHosts hostlist
+    property var names: []
+    Settings {
+        category: "serverlist"
+        property alias names: main.names
+    }
+
     ScrollView {
         id: scrollView
         anchors.fill: parent
 
         StackView {
-            id: viewstack
+            id: viewStack
             anchors.fill: parent
             ListView {
                 id: serverlist
@@ -25,25 +31,28 @@ ApplicationWindow {
                 anchors.bottomMargin: -442
                 anchors.fill: parent
                 model: hosts
-                delegate: ItemDelegate {
-                    text:  name
-                    width: parent.width
-                }
+                delegate: hostItemDelegate
             }
         }
 
     }
 
+    Component {
+        id: hostItemDelegate
+        Column {
+            width: parent.width
+            spacing: 5
+            Text { text: name }
+            Text { text: url  }
+
+        }
+    }
+
     ListModel {
         id: hosts
         ListElement {
-            name: "pg_prime"
-        }
-        ListElement {
-            name: "pg_secondary"
-        }
-        ListElement {
-            name: "backup"
+            name: "primary node"
+            url:"psql://example.com:5432/postgres"
         }
     }
 

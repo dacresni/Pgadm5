@@ -4,5 +4,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>hostslist.h</file>
         <file>hostslist.cpp</file>
+        <file>EditConnection.qml</file>
     </qresource>
 </RCC>
